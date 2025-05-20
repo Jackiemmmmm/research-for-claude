@@ -1,0 +1,158 @@
+% ====================================================================
+%  Machine Learning Assignment Template
+%  Title  : Shakespeare‑specific Chatbot – Prompt Engineering & Design
+%  Authors : <Student Name(s) – Student ID(s)>
+%  Date   : \today
+% --------------------------------------------------------------------
+%  Notes for students
+%  • Length: 1,500 – 2,000 words
+%  • Replace the placeholders surrounded by <angle brackets>.
+%  • Keep all \section titles unchanged so that marking rubrics align.
+%  • Use the custom boxes below to present your prompt / response pairs.
+%  • Cite only peer‑reviewed literature or official tool documentation.
+% ====================================================================
+
+\documentclass[11pt,a4paper]{article}
+
+% ---------- Packages ----------
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}           % line spacing
+\usepackage{graphicx}           % figures
+\usepackage{hyperref}           % hyperlinks
+\usepackage[numbers]{natbib}    % bibliography
+\usepackage{caption}            % caption formatting
+\usepackage{booktabs}           % nicer tables
+\usepackage[most]{tcolorbox}          % prompt / response boxes
+\usepackage{parskip}            % no paragraph indent
+\usepackage{xcolor}             % colour definitions
+\usepackage{enumitem}           % tight itemise / enumerate
+
+
+% ---------- Box styles ----------
+\tcbset{
+	enhanced,
+	sharp corners,
+	boxrule=0.4pt,
+	left=2mm,right=2mm,top=1mm,bottom=1mm
+}
+
+\newtcolorbox{promptbox}{
+	colback=orange!10,
+	colframe=orange!60!black,
+	title=\textbf{Student Prompt},
+}
+
+\newtcolorbox{responsebox}{
+	colback=blue!5,
+	colframe=blue!60!black,
+	title=\textbf{ChatGPT Response},
+}
+
+\newtcolorbox{insightbox}{
+	colback=green!8,
+	colframe=green!50!black,
+	title=\textbf{Insight / Reflection},
+}
+
+% ---------- Metadata ----------
+\title{Developing a Shakespeare‑Specific Chatbot\\
+	\large Prompt Engineering, Validation, and System Design}
+\author{Full Name of students in group (Student ID)\\
+	CSCI433/933\\
+	University of Wollongong, Australia}
+\date{\today}
+
+% ====================================================================
+\begin{document}
+	\maketitle
+	\section{Introduction}
+	Briefly describe the project objective, scope (150–200 words), and how
+	LLMs assist your investigation.
+	
+	% --------------------------------------------------------------------
+	\section{Prompt Engineering Workflow}
+	\subsection{Strategy}
+	Explain your overall prompting strategy and how you iteratively refined
+	questions to drill down into model size, data pipelines, and deployment
+	constraints.
+	
+	\subsection{Prompt / Response Log}
+	For each interaction that materially changed your understanding,
+	include:
+	
+	% ---------- Example interaction ----------
+	\begin{promptbox}
+		How can I fine‑tune a distilled transformer on a domain‑specific corpus
+		containing Early Modern English (Shakespeare) with limited GPU memory?
+	\end{promptbox}
+	
+	\begin{responsebox}
+		ChatGPT (excerpt):  
+		You can start with DistilGPT‑2 and use parameter‑efficient tuning
+		such as LoRA… <trimmed for brevity>
+	\end{responsebox}
+	
+	\begin{insightbox}
+		\textbf{Action taken:} Switched search focus to LoRA + 8‑bit
+		quantisation strategies; formulated next prompt on LoRA rank choice.
+	\end{insightbox}
+	% ---------- /Example ----------
+	
+	Repeat the triad (prompt / response / insight) as needed.  
+	\textbf{Important:} redact any irrelevant conversational fluff.
+	
+	% --------------------------------------------------------------------
+	\section{Critical Appraisal of ChatGPT Outputs}
+	Assess accuracy and completeness of the model’s answers. Organise by
+	theme (model architecture, data preparation, generation tasks, tools).
+	Reference literature to support or contest specific claims.
+	
+	% --------------------------------------------------------------------
+	\section{Literature Cross‑Validation}
+	\begin{enumerate}[label=\arabic*.]
+		\item \textbf{Model Architectures:} summarise 2–3 peer‑reviewed
+		papers on lightweight transformers or RNNs for niche domains.
+		\item \textbf{Data Preparation:} cite studies on cleaning Shakespearean
+		or Early Modern English corpora.
+		\item \textbf{Generation and Summarisation:} discuss methods for
+		controllable text generation and scene‑based summarisation.
+		\item \textbf{Deployment Tools:} reference official documentation or
+		conference papers on HuggingFace, LangChain, RAG pipelines, etc.
+	\end{enumerate}
+	
+	% --------------------------------------------------------------------
+	\section{Proposed System Design (Part Two)}
+	Present an end‑to‑end architecture diagram 
+	%(Figure \ref{fig:architecture})
+	and explain each component: data ingestion, fine‑tuning, retrieval
+	augmentation, inference API, UI. Highlight resource constraints and how
+	choices were informed by ChatGPT dialogue and literature.
+	
+	\begin{figure}[h]
+		\centering
+	%	\includegraphics[width=0.9\textwidth]{architecture_placeholder}
+		\caption{High‑level system design for a Shakespeare‑specific chatbot.}
+		\label{fig:architecture}
+	\end{figure}
+	
+	% --------------------------------------------------------------------
+	\section{Conclusion}
+	Summarise key takeaways about prompt‑driven inquiry, insights gained,
+	and next steps.
+	
+	% --------------------------------------------------------------------
+%	\section*{Word Count}
+%	% Update the count manually or with \texttt{texcount} if required.
+%	\textbf{Approximate narrative word count:} $<XXXX>$ (target 1 500–2 000).
+%	
+	% --------------------------------------------------------------------
+	\bibliographystyle{plainnat}
+	\bibliography{references}   % Create references.bib in the same folder
+	
+	% --------------------------------------------------------------------
+%	\appendix
+%	\section{Complete Prompt / Response Transcript (Optional)}
+%	Include full, unabridged dialogue here if required, using the same box
+%	format.
+	
+\end{document}
